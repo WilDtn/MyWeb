@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>William´s Web</title>
+  <title>WILLIAM´S WEB</title>
+  <meta name="description" content="Servicios de estadística: análisis, dashboards, modelado y automatización. William's Web." />
 
   <style>
     /* ----- ESTILOS GENERALES ----- */
@@ -30,6 +31,19 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    header .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    header img.logo {
+      height:40px;
+      width:auto;
+      display:block;
     }
 
     nav a {
@@ -64,7 +78,7 @@
 
     .hero p {
       font-size: 1.3rem;
-      max-width: 600px;
+      max-width: 800px;
       animation: fadeIn 1.8s ease forwards;
       opacity: 0;
     }
@@ -84,6 +98,8 @@
       cursor: pointer;
       transition: 0.3s;
       font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn:hover {
@@ -113,11 +129,49 @@
       border-radius: 20px;
       backdrop-filter: blur(8px);
       transition: 0.3s;
+      min-height: 180px;
+    }
+
+    .card h3 {
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.4;
     }
 
     .card:hover {
       background: rgba(255,255,255,0.12);
       transform: translateY(-5px);
+    }
+
+    /* ----- VIDEO ----- */
+    .video-section {
+      padding: 60px 20px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+    }
+
+    .video-container iframe,
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: 0;
     }
 
     /* ----- CONTACTO ----- */
@@ -127,8 +181,13 @@
     }
 
     .contacto h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 20px;
+    }
+
+    .contact-details {
+      margin-top: 18px;
+      font-size: 1.05rem;
     }
 
     footer {
@@ -136,6 +195,17 @@
       padding: 25px;
       background: rgba(0,0,0,0.2);
       margin-top: 40px;
+      font-size: 0.95rem;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; max-width: 90%; }
+      header { padding: 12px 18px; }
+      nav a { margin: 0 8px; font-size: 0.95rem; }
+      .servicios { padding: 40px 18px; }
+      .contacto { padding: 40px 18px; }
     }
   </style>
 </head>
@@ -144,19 +214,24 @@
 
   <!-- NAV -->
   <header>
-    <h2 style="margin:0;">MiSitioWeb</h2>
+    <div class="brand">
+      <img src="logo.png" alt="Logo William's Web" class="logo" />
+      <h2 style="margin:0;">WILLIAM´S WEB</h2>
+    </div>
+
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
+      <a href="#video">Video</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
   <!-- HERO -->
   <section id="inicio" class="hero">
-    <h1>Bienvenido a Mi Landing Page Moderna</h1>
-    <p>Una página web elegante, responsiva y animada. Lista para usar como portafolio, negocio, curso o proyecto personal.</p>
-    <button class="btn">Comenzar</button>
+    <h1>Bienvenido a William´s Web — Servicios de Estadística</h1>
+    <p>Brindamos análisis estadístico, modelado predictivo, dashboards interactivos y automatización de procesos para empresas, investigaciones y proyectos académicos.</p>
+    <a class="btn" href="#contacto" role="button">Comenzar</a>
   </section>
 
   <!-- SERVICIOS -->
@@ -165,28 +240,39 @@
 
     <div class="cards">
       <div class="card">
-        <h3>Diseño Web</h3>
-        <p>Sitios modernos, rápidos y elegantes.</p>
+        <h3>Análisis Estadístico</h3>
+        <p>Consultoría en diseño de experimentos, pruebas de hipótesis, series de tiempo y estadística descriptiva.</p>
       </div>
       <div class="card">
-        <h3>Dashboards</h3>
-        <p>Visualizaciones con R Shiny, Python o Power BI.</p>
+        <h3>Dashboards & Visualización</h3>
+        <p>Dashboards interactivos con R Shiny, Python (Dash / Streamlit) o Power BI para seguimiento en tiempo real.</p>
       </div>
       <div class="card">
-        <h3>Automatización</h3>
-        <p>Scripts inteligentes para mejorar procesos.</p>
+        <h3>Modelado & Machine Learning</h3>
+        <p>Modelos predictivos, clasificación, regresión y validación cruzada para decisiones basadas en datos.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video" class="video-section">
+    <div class="video-container">
+      <!-- Inserte aquí tu iframe proporcionado -->
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/nFB-1Y1yMdo?si=7U4f-EGFEp2e9gvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="contacto">
     <h2>Contacto</h2>
-    <p>Escríbeme a: <strong>tucorreo@example.com</strong></p>
+    <p class="contact-details">Escríbeme a: <strong>tucorreo@example.com</strong></p>
+    <p style="margin-top:18px;">
+      <a class="btn" href="mailto:tucorreo@example.com">Enviar correo</a>
+    </p>
   </section>
 
   <footer>
-    © 2025 - Mi Landing Page Moderna
+    © 2025 - WILLIAM´S WEB
   </footer>
 
 </body>
