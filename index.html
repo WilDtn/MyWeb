@@ -1,261 +1,262 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DTN STATISTICS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    /* ----- ESTILOS GENERALES ----- */
+<title>DTN STATISTICS – Servicios Profesionales de Estadística</title>
+
+<!-- SEO básico -->
+<meta name="description" content="Servicios profesionales de estadística, análisis de datos, modelamiento, visualización y consultoría técnica.">
+<meta name="keywords" content="estadística, análisis de datos, R, consultoría, modelos, data science">
+<meta name="author" content="William Dutan">
+
+<!-- Fuente -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #000000; /* fondo negro */
-      color: #d0d0d0; /* texto plateado */
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #111;
+        color: #ddd;
+        line-height: 1.6;
     }
 
     header {
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(15px);
-      background: rgba(0,0,0,0.7);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      z-index: 1000;
+        background: #000;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #222;
     }
 
     .logo {
-      height: 60px;
-      margin-right: 12px;
-      filter: drop-shadow(0 0 6px #ffffff88);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #b0e0ff; /* plateado-azulado elegante */
-      letter-spacing: 1px;
+        height: 70px;
+        filter: brightness(1.2);
     }
 
     nav a {
-      color: #d0d0d0;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
+        color: #ddd;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
     }
 
     nav a:hover {
-      color: #6ecbff;
+        color: #fff;
     }
 
-    /* HERO */
     .hero {
-      height: 85vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      background: linear-gradient(135deg, #000000, #0d0d0d, #000000);
+        text-align: center;
+        padding: 100px 20px;
+        background: linear-gradient(180deg, #111 0%, #000 100%);
+        animation: fadeIn 1.2s ease-in-out;
     }
 
     .hero h1 {
-      font-size: 3.2rem;
-      margin-bottom: 10px;
-      color: #6ecbff;
-      font-weight: 700;
-      text-shadow: 0 0 10px #005577;
+        font-size: 3rem;
+        color: #fff;
+        margin-bottom: 20px;
     }
 
     .hero p {
-      max-width: 660px;
-      font-size: 1.25rem;
-      opacity: 0.9;
-      color: #d6d6d6;
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: auto;
+        color: #ccc;
     }
 
-    .btn {
-      margin-top: 30px;
-      padding: 12px 28px;
-      background: #6ecbff;
-      color: #000;
-      border-radius: 25px;
-      font-size: 1.1rem;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
+    .section {
+        padding: 80px 20px;
+        max-width: 1100px;
+        margin: auto;
     }
 
-    .btn:hover {
-      background: #9ee3ff;
+    .section h2 {
+        text-align: center;
+        font-size: 2.3rem;
+        margin-bottom: 40px;
+        color: #fff;
     }
 
-    /* SECCIONES */
-    section {
-      padding: 80px 40px;
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
     }
 
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      text-align: center;
-      color: #6ecbff;
-      text-shadow: 0 0 7px #004455;
+    .service-box {
+        background: #1a1a1a;
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid #222;
+        transition: 0.3s;
     }
 
-    /* Tarjetas */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+    .service-box:hover {
+        transform: translateY(-6px);
+        border-color: #444;
     }
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      padding: 25px;
-      border-radius: 18px;
-      backdrop-filter: blur(12px);
-      transition: 0.3s;
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #dcdcdc;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      background: rgba(255,255,255,0.12);
-    }
-
-    /* VIDEO */
-    .video-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
+    .service-box i {
+        font-size: 40px;
+        color: #58a6ff;
+        margin-bottom: 15px;
     }
 
     iframe {
-      border-radius: 15px;
-      width: 80%;
-      max-width: 800px;
-      height: 450px;
-      border: 2px solid #6ecbff55;
-      box-shadow: 0 0 20px #00668888;
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        border: 1px solid #222;
     }
 
-    /* CONTACTO */
-    .contacto p {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #e0e0e0;
+    .contact-form {
+        max-width: 600px;
+        margin: auto;
     }
 
-    .whatsapp-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #25d366;
-      color: white;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        padding: 12px;
+        color: #ddd;
+        margin-bottom: 15px;
+        border-radius: 8px;
     }
 
-    .whatsapp-btn:hover {
-      opacity: 0.8;
+    .contact-form button {
+        width: 100%;
+        padding: 14px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
     }
 
-    /* FOOTER */
+    .contact-form button:hover {
+        background: #005fcc;
+    }
+
     footer {
-      text-align: center;
-      padding: 25px;
-      background: rgba(255,255,255,0.05);
-      margin-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #bcbcbc;
+        text-align: center;
+        padding: 30px;
+        margin-top: 40px;
+        background: #000;
+        border-top: 1px solid #222;
+        color: #777;
     }
-  </style>
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+</style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <header>
-    <div class="brand">
-      <img src="logo.png" class="logo" alt="Logo">
-      DTN STATISTICS
-    </div>
+<header>
+    <img src="logo.png" alt="Logo DTN Statistics" class="logo">
     <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#video">Video</a>
-      <a href="#contacto">Contacto</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#video">Video</a>
+        <a href="#contacto">Contacto</a>
     </nav>
-  </header>
+</header>
 
-  <!-- HERO -->
-  <section id="inicio" class="hero">
-    <h1>Soluciones Estadísticas Profesionales</h1>
-    <p>Modelos, análisis avanzado, dashboards, automatización y consultoría para empresas, investigadores y proyectos técnicos.</p>
-    <button class="btn">Solicitar Información</button>
-  </section>
+<section class="hero">
+    <h1>DTN STATISTICS</h1>
+    <p>Consultoría profesional en estadística, análisis de datos, modelamiento predictivo, visualización y soluciones basadas en evidencia.</p>
+</section>
 
-  <!-- SERVICIOS -->
-  <section id="servicios">
-    <h2>Servicios</h2>
+<section class="section" id="servicios">
+    <h2>Servicios Profesionales</h2>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Análisis Estadístico</h3>
-        <p>Modelos, inferencia, regresiones, tests, diseño de experimentos y reportes profesionales.</p>
-      </div>
+    <div class="services-grid">
+        <div class="service-box">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Análisis Estadístico</h3>
+            <p>Modelos, pruebas estadísticas, regresiones, inferencia y metodología avanzada.</p>
+        </div>
 
-      <div class="card">
-        <h3>Dashboards & Visualización</h3>
-        <p>Power BI, R Shiny y Python para monitorear procesos y tomar decisiones basadas en datos.</p>
-      </div>
+        <div class="service-box">
+            <i class="fa-solid fa-database"></i>
+            <h3>Procesamiento de Datos</h3>
+            <p>Limpieza, transformación, integración y manejo de grandes volúmenes de información.</p>
+        </div>
 
-      <div class="card">
-        <h3>Automatización</h3>
-        <p>Scripts personalizados para optimizar tareas repetitivas con R o Python.</p>
-      </div>
+        <div class="service-box">
+            <i class="fa-solid fa-chart-pie"></i>
+            <h3>Visualización</h3>
+            <p>Dashboards interactivos, reportes dinámicos, gráficos impactantes en R o Python.</p>
+        </div>
+
+        <div class="service-box">
+            <i class="fa-solid fa-brain"></i>
+            <h3>Modelamiento Predictivo</h3>
+            <p>Machine learning, forecasting y modelos aplicados a problemas reales.</p>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- VIDEO -->
-  <section id="video">
-    <h2>Presentación</h2>
+<section class="section" id="sobre">
+    <h2>Sobre mí</h2>
+    <p style="max-width:800px; margin:auto; text-align:center;">
+        Soy William Dutan, analista estadístico con experiencia en métodos de modelamiento, análisis profesional,
+        consultoría y desarrollo de soluciones aplicadas. Trabajo con R, Python, Shiny, SQL y modelos avanzados para resolver
+        problemas reales en empresas, universidades y proyectos personales.
+    </p>
+</section>
 
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/a9jxNusr0tE?si=aG_6FlhWhhDe8HkF"
-        title="Video presentación"
+<section class="section" id="video">
+    <h2>Video Presentación</h2>
+
+    <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/a9jxNusr0tE?rel=0"
+        title="YouTube video player"
         allowfullscreen>
-      </iframe>
-    </div>
-  </section>
+    </iframe>
+</section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="contacto">
+<section class="section" id="contacto">
     <h2>Contacto</h2>
-    <p>📧 Escríbeme: <strong>williamdtn1997@gmail.com</strong></p>
+    <div class="contact-form">
 
-    <a class="whatsapp-btn" href="https://wa.me/5930969445939" target="_blank">
-      Contactar por WhatsApp
-    </a>
-  </section>
+        <!-- Formulario real con Formspree -->
+        <form action="https://formspree.io/f/mnnqqqvq" method="POST">
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="email" name="_replyto" placeholder="Tu correo" required>
+            <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
 
-  <footer>
-    © 2025 — William Dutan | DTN STATISTICS
-  </footer>
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+
+        <!-- Contacto directo -->
+        <p style="text-align:center; margin-top:20px;">
+            También puedes escribir a:<br>
+            <strong>williamdtn1997@gmail.com</strong>
+        </p>
+    </div>
+</section>
+
+<footer>
+    © 2025 DTN STATISTICS – Desarrollado por William Dutan  
+</footer>
 
 </body>
 </html>
+
+
